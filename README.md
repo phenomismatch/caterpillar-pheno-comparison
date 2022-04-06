@@ -1,9 +1,13 @@
 # caterpillar-pheno-comparison
 
+[![DOI](https://zenodo.org/badge/452791701.svg)](https://zenodo.org/badge/latestdoi/452791701)
+
 Data and code repository comparing springtime Lepidoptera phenology from structured and unstructured data sources (Caterpillars Count! and other structured caterpillar surveys, iNaturalist caterpillar observations, and iNaturalist adult butterfly observations)
 
 Associated manuscript:
+
 **Phenology in adult and larval Lepidoptera from structured and unstructured surveys across eastern North America**
+
 Grace Di Cecco, Michael Belitz, Robert J. Cooper, Elise A. Larsen, William Lewis, Leslie Ries, Rob Guralnick, Allen Hurlbert
 
 #### `/code`
