@@ -233,7 +233,7 @@ cc18_sf <- hex_sf %>%
   right_join(cc_2018)
 
 cc18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(cc18_sf) + 
-  tm_polygons(col = "mean10", alpha = 0.75, title = "10% date (DOY)", palette = "YlGn", breaks = seq(80, 210, by = 26)) +
+  tm_polygons(col = "mean10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26)) +
   tm_shape(cc18_sf) + tm_borders(lwd = 2) +
   tm_layout(main.title = "A) Caterpillars Count!", scale = 1.5)
 
@@ -245,7 +245,7 @@ inat18_sf <- hex_sf %>%
   right_join(inat_2018, by = c("cell" = "HEXcell"))
 
 inat18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(inat18_sf) + 
-  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "YlGn", breaks = seq(80, 210.5, by = 26), legend.show = F) +
+  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210.5, by = 26), legend.show = F) +
   tm_shape(cc18_sf) + tm_borders(lwd = 2) +
   tm_layout(main.title = "B) iNaturalist Caterpillars", scale = 1.5)
 
@@ -257,7 +257,7 @@ bfly18_sf <- hex_sf %>%
   right_join(bfly_2018, by = c("cell" = "HEXcell"))
 
 bfly18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(bfly18_sf) + 
-  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "YlGn", breaks = seq(80, 210, by = 26), legend.show = F) +
+  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
   tm_shape(cc18_sf) + tm_borders(lwd = 2) +
   tm_layout(main.title = "C) Adult Butterflies (overwinter as larvae)", scale = 1.5)
 
@@ -269,7 +269,7 @@ egg_sf <- hex_sf %>%
   right_join(egg_2018, by = c("cell" = "HEXcell"))
 
 egg_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(egg_sf) + 
-  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "YlGn", breaks = seq(80, 210, by = 26), legend.show = F) +
+  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
   tm_shape(cc18_sf) + tm_borders(lwd = 2) +
   tm_layout(main.title = "D) Adult Butterflies (overwinter as eggs)", scale = 1.5)
 
@@ -281,7 +281,7 @@ pup_sf <- hex_sf %>%
   right_join(pup_2018, by = c("cell" = "HEXcell"))
 
 pup_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(pup_sf) + 
-  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "YlGn", breaks = seq(80, 210, by = 26), legend.show = F) +
+  tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
   tm_shape(cc18_sf) + tm_borders(lwd = 2) +
   tm_layout(main.title = "E) Adult Butterflies (overwinter as pupae)", scale = 1.5,
             inner.margins = c(0.12, 0.02, 0.02, 0.02), 
@@ -317,8 +317,8 @@ lat_regression <- ggplot() +
         legend.title = element_blank(),
         legend.background = element_rect(linetype = 1, color = 1, fill = "transparent"),
         title = element_text(size = 16)) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF", "#D7BDE2","dodgerblue4")) +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF", "#D7BDE2","dodgerblue4"))
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255")) +
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255"))
 
 pdf(paste0(getwd(), "/figures/fig2_10pct_dates_map.pdf"), height = 15, width = 12)
 pushViewport(viewport(layout = grid.layout(nrow = 3, ncol = 2)))
@@ -388,8 +388,8 @@ lat_regression <- ggplot() +
   theme_classic(base_size = 20) +
   theme(legend.position = c(0.7, 0.25), legend.title = element_blank(),
         legend.background = element_rect(linetype = 1, color = 1, fill = "transparent")) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF", "#D7BDE2","dodgerblue4")) +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF", "#D7BDE2","dodgerblue4"))
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255")) +
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255"))
 
 pdf(paste0(getwd(), "/figures/pct50_dates_map.pdf"), height = 15, width = 12)
 pushViewport(viewport(layout = grid.layout(nrow = 3, ncol = 2)))
@@ -438,7 +438,7 @@ inat_adult10 <- ggplot(filter(inat_bfly_dev, !is.na(code)), aes(x = dev10_bfly, 
   xlim(-40, 40) +
   ylim(-80, 100) +
   labs(x = expression(paste(Delta, " Adult butterflies")), y = expression(paste(Delta, " iNaturalist caterpillars")), col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), 
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), 
                      labels = c("RE" = "eggs, r = 0.26**", "RL" = "larvae, r = 0.35***", "RP" = "pupae, r = 0.39***")) +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = "transparent"))
 
@@ -448,7 +448,7 @@ cc_adult10 <- ggplot(filter(quant_dev, !is.na(code)), aes(y = dev10_adult, x = d
   geom_smooth(method = "lm", se = F) +
   ylim(-40, 40) +
   labs(y = expression(paste(Delta, " Adult butterflies")), x = expression(paste(Delta, " Caterpillars Count!")), col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), 
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), 
                      labels = c("RE" = "eggs, r = 0.70", "RL" = "larvae, r = 0.21", "RP" = "pupae, r = 0.61**")) +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = "transparent")) +
   annotate(geom= "text", x = -8, y =-38, label = "early", size = 5) +
@@ -472,7 +472,7 @@ inat_adult50 <- ggplot(filter(inat_bfly_dev, !is.na(code)), aes(x = dev50_bfly, 
   theme_set(theme_classic(base_size  = 16)) +
   geom_smooth(method = "lm", se = F) +
   labs(x = expression(paste(Delta, " Adult butterflies")), y = expression(paste(Delta, " iNaturalist caterpillars")), col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), 
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), 
                      labels = c("RE" = "eggs, r = 0.33***", "RL" = "larvae, r = 0.41***", "RP" = "pupae, r = 0.45***")) +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = "transparent"))
 
@@ -481,7 +481,7 @@ cc_adult50 <- ggplot(filter(quant_dev, !is.na(code)), aes(y = dev50_adult, x = d
   theme_set(theme_classic(base_size = 16)) +
   geom_smooth(method = "lm", se = F) +
   labs(y = expression(paste(Delta, " Adult butterflies")), x = expression(paste(Delta, " Caterpillars Count!")), col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), 
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), 
                      labels = c("RE" = "eggs, r = 0.06", "RL" = "larvae, r = 0.06", "RP" = "pupae, r = 0.31")) +
   theme(legend.position = c(0.25, 0.8), legend.background = element_rect(fill = "transparent")) +
   annotate(geom= "text", x = -8, y =-28, label = "early", size = 5) +
@@ -567,14 +567,14 @@ for_inat_adult10 <- ggplot(filter(for_inat_bfly_dev, !is.na(code)), aes(x = dev1
   geom_smooth(method = "lm", se = F) +
   xlim(-25,50)+
   labs(x = "Adult butterflies", y = "iNaturalist caterpillars") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = "none")
 
 for_cc_adult10 <- ggplot(filter(for_quant_dev, !is.na(code)), aes(y = dev10_adult, x = dev10_cc, col = code)) + geom_point() +
   geom_abline(slope = 1, intercept = 0) +
   geom_smooth(method = "lm", se = F) +
   labs(y = "Adult butterflies", x = "Caterpillars Count!", col = "Adult overwinter") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = c(0.85, 0.2))
 
 plot_grid(for_inat_cc10, for_inat_adult10, for_cc_adult10, ncol = 2)
@@ -592,14 +592,14 @@ for_inat_adult50 <- ggplot(filter(for_inat_bfly_dev, !is.na(code)), aes(x = dev5
   geom_smooth(method = "lm", se = F) +
   xlim(-20, 30) +
   labs(x = "Adult butterflies", y = "iNaturalist caterpillars") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = "none")
 
 for_cc_adult50 <- ggplot(filter(for_quant_dev, !is.na(code)), aes(y = dev50_adult, x = dev50_cc, col = code)) + geom_point() +
   geom_abline(slope = 1, intercept = 0) +
   geom_smooth(method = "lm", se = F) +
   labs(y = "Adult butterflies", x = "Caterpillars Count!", col = "Adult overwinter") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = c(0.85, 0.15), legend.background = element_rect(fill = "transparent"))
 
 plot_grid(for_inat_cc50, for_inat_adult50, for_cc_adult50, ncol = 2)
@@ -625,7 +625,7 @@ inat_only_10 <- ggplot(filter(inat_only_bfly_dev, !is.na(code)), aes(x = dev10_b
   xlim(-25, 25) +
   annotate(geom = "text", x = -5, y = 50, label = "Deviance in 10% date", size = 7) +
   labs(x = "Adult butterflies", y = "iNaturalist caterpillars") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = "none")
 
 inat_only_50 <- ggplot(filter(inat_only_bfly_dev, !is.na(code)), aes(x = dev50_bfly, y = dev50_inat, col = code)) + geom_point() +
@@ -634,7 +634,7 @@ inat_only_50 <- ggplot(filter(inat_only_bfly_dev, !is.na(code)), aes(x = dev50_b
   annotate(geom = "text", x = -5, y = 50, label = "Deviance in 50% date", size = 7) +
   xlim(-20, 20) +
   labs(x = "Adult butterflies", y = "iNaturalist caterpillars", col = "Overwinter") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = c(0.85, 0.15))
 
 plot_grid(inat_only_10, inat_only_50)
@@ -720,11 +720,11 @@ inat_cc_plot <- ggplot(inat_cc_diff, aes(x = diff_10_days, y = diff_10_gdd)) +
   geom_point() + labs(x = "Lag iNat - CC! (days)", y = "Lag iNat - CC! GDD")
 
 inat_adult_plot <- ggplot(inat_bfly_diff, aes(x = diff_10_days, y = diff_10_gdd, col = code)) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   geom_point() + labs(x = "Lag iNat - Bfly (days)", y = "Lag iNat - Bfly GDD", col = "Overwinter")
 
 adult_cc_plot <- ggplot(cc_bfly_diff, aes(x = diff_10_days, y = diff_10_gdd, col = code)) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   geom_point() + labs(x = "Lag CC! - Bfly (days)", y = "Lag CC! - Bfly GDD", col = "Overwinter")
 
 plot_grid(inat_cc_plot, inat_adult_plot, adult_cc_plot, nrow = 2)
@@ -735,11 +735,11 @@ inat_cc_plot <- ggplot(inat_cc_diff, aes(x = diff_50_days, y = diff_50_gdd)) +
   geom_point() + labs(x = "Lag iNat - CC! (days)", y = "Lag iNat - CC! GDD")
 
 inat_adult_plot <- ggplot(inat_bfly_diff, aes(x = diff_50_days, y = diff_50_gdd, col = code)) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   geom_point() + labs(x = "Lag iNat - Bfly (days)", y = "Lag iNat - Bfly GDD", col = "Overwinter")
 
 adult_cc_plot <- ggplot(cc_bfly_diff, aes(x = diff_50_days, y = diff_50_gdd, col = code)) +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   geom_point() + labs(x = "Lag CC! - Bfly (days)", y = "Lag CC! - Bfly GDD", col = "Overwinter")
 
 plot_grid(inat_cc_plot, inat_adult_plot, adult_cc_plot, nrow = 2)
@@ -758,13 +758,13 @@ inat_adult_plot <- ggplot(inat_bfly_diff, aes(x = diff_10_days, fill = code)) +
   theme(axis.title.x = element_text(margin = margin(b=10), vjust= -5)) +
   labs(x = expression(" " %<-% "    iNaturalist                Adults\n caterpillars later           later" %->% " "),
        fill = "Adults overwinter as", y = "") +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "eggs", "RL" = "larvae", "RP" = "pupae"))
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "eggs", "RL" = "larvae", "RP" = "pupae"))
 
 adult_cc_plot <- ggplot(cc_bfly_diff, aes(x = diff_10_days, fill = code)) +
   geom_density(alpha = 0.5) + 
   theme(axis.title.x = element_text(margin = margin(b=10), vjust= -5)) +
   labs(x = expression(" " %<-% " Caterpillars                Adults\n Count! later                  later" %->% " "), y = "Density") +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
 
 legend <- get_legend(inat_adult_plot)
 
@@ -779,11 +779,11 @@ inat_cc_plot <- ggplot(inat_cc_diff, aes(x = diff_50_days)) +
 
 inat_adult_plot <- ggplot(inat_bfly_diff, aes(x = diff_50_days, fill = code)) +
   geom_density(alpha = 0.5) + labs(x = "iNaturalist caterpillars - Adult butterflies", fill = "Adults overwinter as", y = "") +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
 
 adult_cc_plot <- ggplot(cc_bfly_diff, aes(x = diff_50_days, fill = code)) +
   geom_density(alpha = 0.5) + labs(x = "Caterpillars Count! - Adult butterflies", y = "Density") +
-  scale_fill_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
+  scale_fill_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae"))
 
 legend <- get_legend(inat_adult_plot)
 
@@ -899,10 +899,10 @@ temp10 <- ggplot(filter(mod_ests_10, term == "temp_dev"), aes(x = term, y = esti
                                                           width = 0.3, cex = 1, position = position_dodge(width = 0.6)) + 
   geom_hline(yintercept = 0, lty = 2) +
   labs(x = "", y = "Estimate", col = "Lag in 10% date", shape = "Adults overwinter as") +
-  scale_x_discrete(labels = c("temp_dev" = "Deviance in\nspring temp", "latitude" = "Latitude")) +
-  scale_color_manual(values = c("#3E4A89FF", 
-                                "#1F9E89FF",
-                                "#6DCD59FF"),
+  scale_x_discrete(labels = c("temp_dev" = "Anomaly in\nspring temp", "latitude" = "Latitude")) +
+  scale_color_manual(values = c("#117733", 
+                                "#44AA99",
+                                "#88CCEE"),
                      labels = c("CC! - Bfly" = "Caterpillars Count! - Adult butterflies",
                                 "iNat - Bfly" = "iNaturalist caterpillars - adult butterflies",
                                 "iNat - CC!" = "iNaturalist caterpillars - Caterpillars Count!")) +
@@ -916,12 +916,13 @@ lat10 <- ggplot(filter(mod_ests_10, term == "latitude"), aes(x = term, y = estim
   geom_hline(yintercept = 0, lty = 2) +
   labs(x = "", y = "Estimate", col = "Lag 10% date model", shape = "Adults overwinter as") +
   scale_x_discrete(labels = c("mean_temp" = "Spring temp", "latitude" = "      Latitude")) +
-  scale_color_manual(values = c("#3E4A89FF", 
-                                "#1F9E89FF",
-                                "#6DCD59FF"),
-                     labels = c("CC! - Bfly" = "Caterpillars Count! - Adult butterflies",
+  scale_color_manual(values = c("#117733", 
+                                "#44AA99",
+                                "#88CCEE"),
+                     labels = c("iNat - CC!" = "iNaturalist caterpillars - Caterpillars Count!",
                                 "iNat - Bfly" = "iNaturalist caterpillars - Adult butterflies",
-                                "iNat - CC!" = "iNaturalist caterpillars - Caterpillars Count!")) +
+                                "CC! - Bfly" = "Caterpillars Count! - Adult butterflies"),
+                     guide = guide_legend(reverse = T)) +
   scale_shape_manual(values = c(15, 16, 17, 18), labels = c("None" = "(unspecified)", "RL" = "larvae",
                                                             "RE" = "eggs", "RP" = "pupae")) +
   coord_flip()
@@ -1018,17 +1019,18 @@ cc_temp <- ggplot(pheno_dev_temp, aes(x = temp_dev, y = dev10_cc)) + geom_point(
   geom_hline(yintercept = 0, lty = 2) +
   scale_x_continuous(breaks = c(-1,0,1)) +
   ylim(-15,15)+
-  labs(x = "Spring temperature deviance (°C)", y = "Caterpillars Count!")
+  labs(x = "Spring temperature anomaly (°C)", y = "Caterpillars Count!")
 
-inat_temp <- ggplot(inat_dev_temp, aes(x = temp_dev, y = dev10)) + geom_point() + geom_smooth(method = "lm", se = F) +
+inat_temp <- ggplot(inat_dev_temp, aes(x = temp_dev, y = dev10)) + 
+  geom_point() + geom_smooth(method = "lm", se = F) +
   geom_hline(yintercept = 0, lty = 2) +
-  labs(x = "Spring temperature deviance (°C)", y = "iNaturalist caterpillars")
+  labs(x = "Spring temperature anomaly (°C)", y = "iNaturalist caterpillars")
 
 adult_temp <- ggplot(adult_bfly_dev_temp, aes(x = temp_dev, y = dev10, col = code)) + 
   geom_hline(yintercept = 0, lty = 2) +
   geom_point() + geom_smooth(method = "lm", se = F) + 
-  labs(x = "Spring temperature deviance (°C)", y = "Adult butterflies", col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "eggs", "RL" = "larvae", "RP" = "pupae")) +
+  labs(x = "Spring temperature anomaly (°C)", y = "Adult butterflies", col = "Adults overwinter as") +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "eggs", "RL" = "larvae", "RP" = "pupae")) +
   theme(legend.position = c(0.25, 0.85), legend.background = element_rect(fill = "transparent"))
 
 plot_grid(cc_temp, inat_temp, adult_temp, nrow = 2, labels = c("A", "B", "C"))
@@ -1056,7 +1058,7 @@ adult_temp <- ggplot(adult_bfly_dev_temp, aes(x = temp_dev, y = dev50, col = cod
   geom_hline(yintercept = 0, lty = 2) +
   geom_point() + geom_smooth(method = "lm", se = F) + 
   labs(x = "Spring temperature deviance (°C)", y = "Adult butterflies", col = "Adults overwinter as") +
-  scale_color_manual(values = c("#482878FF", "#26828EFF", "#B4DE2CFF"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
+  scale_color_manual(values = c("#332288", "#117733", "#44AA99"), labels = c("RE" = "Eggs", "RL" = "Larvae", "RP" = "Pupae")) +
   theme(legend.position = c(0.25, 0.25), legend.background = element_rect(fill = "transparent"))
 
 plot_grid(cc_temp, inat_temp, adult_temp, nrow = 2, labels = c("A", "B", "C"))
