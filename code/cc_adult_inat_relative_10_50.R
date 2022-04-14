@@ -234,7 +234,7 @@ cc18_sf <- hex_sf %>%
 
 cc18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(cc18_sf) + 
   tm_polygons(col = "mean10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26)) +
-  tm_shape(cc18_sf) + tm_borders(lwd = 2) +
+  tm_shape(cc18_sf) + tm_borders(col = "gray10", lwd = 2) +
   tm_layout(main.title = "A) Caterpillars Count!", scale = 1.5)
 
 inat_2018 <- inat_cats %>%
@@ -246,7 +246,7 @@ inat18_sf <- hex_sf %>%
 
 inat18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(inat18_sf) + 
   tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210.5, by = 26), legend.show = F) +
-  tm_shape(cc18_sf) + tm_borders(lwd = 2) +
+  tm_shape(cc18_sf) + tm_borders(col = "gray10", lwd = 2) +
   tm_layout(main.title = "B) iNaturalist Caterpillars", scale = 1.5)
 
 bfly_2018 <- adult_bfly %>%
@@ -258,7 +258,7 @@ bfly18_sf <- hex_sf %>%
 
 bfly18_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(bfly18_sf) + 
   tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
-  tm_shape(cc18_sf) + tm_borders(lwd = 2) +
+  tm_shape(cc18_sf) + tm_borders(col = "gray10", lwd = 2) +
   tm_layout(main.title = "C) Adult Butterflies (overwinter as larvae)", scale = 1.5)
 
 egg_2018 <- adult_bfly %>%
@@ -270,7 +270,7 @@ egg_sf <- hex_sf %>%
 
 egg_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(egg_sf) + 
   tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
-  tm_shape(cc18_sf) + tm_borders(lwd = 2) +
+  tm_shape(cc18_sf) + tm_borders(col = "gray10", lwd = 2) +
   tm_layout(main.title = "D) Adult Butterflies (overwinter as eggs)", scale = 1.5)
 
 pup_2018 <- adult_bfly %>%
@@ -282,7 +282,7 @@ pup_sf <- hex_sf %>%
 
 pup_map <- tm_shape(nam_sf) + tm_polygons(col = "gray95") + tm_shape(pup_sf) + 
   tm_polygons(col = "w10", alpha = 0.75, title = "10% date (DOY)", palette = "PuBu", breaks = seq(80, 210, by = 26), legend.show = F) +
-  tm_shape(cc18_sf) + tm_borders(lwd = 2) +
+  tm_shape(cc18_sf) + tm_borders(col = "gray10", lwd = 2) +
   tm_layout(main.title = "E) Adult Butterflies (overwinter as pupae)", scale = 1.5,
             inner.margins = c(0.12, 0.02, 0.02, 0.02), 
             outer.margins = c(0.01,0.01,0.01,0.01))
