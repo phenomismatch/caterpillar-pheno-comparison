@@ -320,6 +320,18 @@ lat_regression <- ggplot() +
   scale_color_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255")) +
   scale_fill_manual(values = c("#332288", "#117733", "#44AA99", "#88CCEE","#882255"))
 
+# Regression stats
+inat_lat_lm = lm(w10 ~ latitude, data = inat18_df)
+cc_lat_lm = lm(mean10 ~ latitude, data = cc18_df)
+bfly_lat_lm = lm(w10 ~ latitude, data = bfly18_df)
+egg_lat_lm = lm(w10 ~ latitude, data = egg_df)
+pup_lat_lm = lm(w10 ~ latitude, data = pup_df)
+
+
+
+
+
+
 pdf(paste0(getwd(), "/figures/fig2_10pct_dates_map.pdf"), height = 15, width = 12)
 pushViewport(viewport(layout = grid.layout(nrow = 3, ncol = 2)))
 print(cc18_map, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
