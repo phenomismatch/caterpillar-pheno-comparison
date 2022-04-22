@@ -174,7 +174,7 @@ adult_bfly_dev <- adult_bfly %>%
          dev10 = w10 - mean10,
          dev50 = w50 - mean50)
 
-#### Figure 1 #####
+#### Figure S1 #####
 # Data availability hex map for three datasets
 
 cc_sf <- hex_sf %>%
@@ -213,9 +213,9 @@ bfly_map <- tm_shape(nam_sf) + tm_polygons() + tm_shape(bfly_sf) +
   tm_layout(main.title = "C) Adult Butterflies", scale = 1.5)
 
 data_map <- tmap_arrange(cc_map, inat_map, bfly_map, ncol = 2)
-tmap_save(data_map, "figures/fig1_data_availability.pdf", units = "in", height = 8, width = 10)
+tmap_save(data_map, "figures/figS1_data_availability.pdf", units = "in", height = 8, width = 10)
 
-#### Figure 2 ####
+#### Figure 1 ####
 # 10% date maps, 2018
 
 cols <- RColorBrewer::brewer.pal(9, "YlGn")
@@ -332,7 +332,7 @@ pup_lat_lm = lm(w10 ~ latitude, data = pup_df)
 
 
 
-pdf(paste0(getwd(), "/figures/fig2_10pct_dates_map.pdf"), height = 15, width = 12)
+pdf(paste0(getwd(), "/figures/fig1_10pct_dates_map.pdf"), height = 15, width = 12)
 pushViewport(viewport(layout = grid.layout(nrow = 3, ncol = 2)))
 print(cc18_map, vp = viewport(layout.pos.row = 1, layout.pos.col = 1))
 print(inat18_map, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
@@ -413,7 +413,7 @@ print(pup_map, vp = viewport(layout.pos.row = 3, layout.pos.col = 1))
 print(lat_regression, vp = viewport(layout.pos.row = 3, layout.pos.col = 2))
 dev.off()
 
-#### Figure 3 #####
+#### Figure 4 #####
 ## Plot correlations of 10, 50% deviances
 
 cc_dev <- cc_pheno_unnest %>%
@@ -467,7 +467,7 @@ cc_adult10 <- ggplot(filter(quant_dev, !is.na(code)), aes(y = dev10_adult, x = d
   annotate(geom= "text", x = 8, y = -38, label = "late", size = 5)
 
 plot_grid(inat_cc10, inat_adult10, cc_adult10, ncol = 2, labels = c("A", "B", "C"), label_size = 15)
-ggsave("figures/fig3_relative_adult_inat_cc_10.pdf", units = "in", height = 8, width = 10)
+ggsave("figures/fig4_relative_adult_inat_cc_10.pdf", units = "in", height = 8, width = 10)
 
 # 50%
 inat_cc50 <- ggplot(quant_dev, aes(x = dev10_cc, y = dev50)) + geom_point() +
@@ -757,7 +757,7 @@ adult_cc_plot <- ggplot(cc_bfly_diff, aes(x = diff_50_days, y = diff_50_gdd, col
 plot_grid(inat_cc_plot, inat_adult_plot, adult_cc_plot, nrow = 2)
 ggsave("figures/lag50_days_gdd.pdf", units = "in", height = 8, width = 10)
 
-#### Figure 4 #####
+#### Figure 2 #####
 ## Density plots for lags in days - 10%
 
 inat_cc_plot <- ggplot(inat_cc_diff, aes(x = diff_10_days)) +
@@ -782,7 +782,7 @@ legend <- get_legend(inat_adult_plot)
 
 plot_grid(inat_cc_plot, inat_adult_plot + theme(legend.position = "none"), adult_cc_plot + theme(legend.position = "none"), legend,
           nrow = 2, labels = c("A", "B", "C"), label_size = 15)
-ggsave("figures/fig4_lag10_days_density.pdf", units = "in", height = 8, width = 10)
+ggsave("figures/fig2_lag10_days_density.pdf", units = "in", height = 8, width = 10)
 
 ## Density plots for lags in days - 50%
 inat_cc_plot <- ggplot(inat_cc_diff, aes(x = diff_50_days)) +
@@ -854,7 +854,7 @@ cc_bfly_map <- tm_shape(nam_sf) + tm_polygons() +
 panel_50 <- tmap_arrange(inat_cc_map, inat_bfly_map, cc_bfly_map, nrow = 2)
 tmap_save(panel_50, "figures/lag50_2018_map.pdf", units = "in", height = 8, width = 10)
 
-#### Figure 6 ####
+#### Figure 3 ####
 ## Model: lag ~ latitude + temp + (overwintering?)
 
 load("data/cpc.tempC.2010-2020.RData")
@@ -945,7 +945,7 @@ ests_multi <- plot_grid(lat10 + theme(legend.position = "none"),
                         temp10 + theme(legend.position = "none"), nrow = 2)
 plot_grid(ests_multi, ests_legend, ncol = 2, rel_widths = c(0.5, 0.5))
 
-ggsave("figures/fig5_lag10_mod_ests.pdf", units = "in", height = 5, width = 10)
+ggsave("figures/fig3_lag10_mod_ests.pdf", units = "in", height = 5, width = 10)
 
 mod_ests_50 <- mod_all %>%
   select(dataset, code, tidy50) %>%
@@ -1046,7 +1046,7 @@ adult_temp <- ggplot(adult_bfly_dev_temp, aes(x = temp_dev, y = dev10, col = cod
   theme(legend.position = c(0.25, 0.85), legend.background = element_rect(fill = "transparent"))
 
 plot_grid(cc_temp, inat_temp, adult_temp, nrow = 2, labels = c("A", "B", "C"))
-ggsave("figures/fig6_temp_deviance.pdf", height = 8, width = 10)
+ggsave("figures/fig5_temp_deviance.pdf", height = 8, width = 10)
 
 ## Summary of models
 
